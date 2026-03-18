@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'midtrans' => [
+        'server_key' => env('SB-Mid-server-2O2g9N1knqsWPrsYMbBFVHGS'),
+        'client_key' => env('SB-Mid-client-gV9BVOaL7s-IchIr'),
+        'is_production' => env('MIDTRANS_IS_PRODUCTION', false),
+    ],
+
 ];
