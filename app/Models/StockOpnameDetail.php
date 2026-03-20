@@ -15,6 +15,6 @@ class StockOpnameDetail extends Model
     }
 
     public function stockTotal() {
-        return $this->belongsTo(StockTotal::class);
+        return $this->belongsTo(StockTotal::class, 'product_id', 'product_id');
     }
 }
