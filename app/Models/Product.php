@@ -36,7 +36,4 @@ class Product extends Model
             get: fn($image) => url('/storage/products'. $image),
         );
     }
-
-
-
 }
