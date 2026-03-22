@@ -32,6 +32,7 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        
+        // Ambil data email dan password dari request
+        $credentials = $request->only('email', 'password');
     }
 }
