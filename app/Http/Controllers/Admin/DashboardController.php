@@ -38,7 +38,6 @@ class DashboardController extends Controller
             ->orderBy('date')
             ->get();
 
-
         // 5 produk terlaris
         $productsData = TransactionDetail::with('product')
             ->select('product_id', DB::raw('SUM(quantity) as total_quantity'))
