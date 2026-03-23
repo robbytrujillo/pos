@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Route;
 // halaman home test
 // Route::inertia('/home', 'Home');
 
-Route::redirect('/login', '/');
+// Route::redirect('/login', '/');
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', [\App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
+    Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
     Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'store'])->name('login.store');
 });
 

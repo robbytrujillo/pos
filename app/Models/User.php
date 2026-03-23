@@ -46,4 +46,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Mengambil daftar permission user dalam bentuk array string.
+     * Digunakan untuk dikirim ke frontend (React/Inertia).
+     */
+    public function getPermissionArray(): array
+    {
+        return $this->getAllPermissions()->pluck('name')->toArray();
+    }
 }
