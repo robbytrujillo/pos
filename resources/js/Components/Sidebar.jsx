@@ -26,6 +26,14 @@ const Sidebar = () => {
                             Dashboard
                         </li>
 
+                        {hasAnyPermission(["dashboard.index"]) && (
+                            <NavItem
+                                href="/admin/dashboard"
+                                icon="bi-speedometer"
+                                label="Dashboard"
+                            />
+                        )}
+
                     </ul>
                 </div>
             </div>
