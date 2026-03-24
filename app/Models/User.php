@@ -51,8 +51,16 @@ class User extends Authenticatable
      * Mengambil daftar permission user dalam bentuk array string.
      * Digunakan untuk dikirim ke frontend (React/Inertia).
      */
-    public function getPermissionArray(): array
+    // public function getPermissionArray(): array
+    // {
+    //     return $this->getAllPermissions()->pluck('name')->toArray();
+    // }
+
+    public function getPermissionArray()
     {
-        return $this->getAllPermissions()->pluck('name')->toArray();
+        return $this->getAllPermissions()->mapWithKeys(function ($permission) {
+            return [$permission->name => true];
+        })->toArray();
     }
+
 }
