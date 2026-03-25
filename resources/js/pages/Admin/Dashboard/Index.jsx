@@ -52,27 +52,27 @@ const isEmpty = (data) =>
     (Array.isArray(data) ? data.length === 0 : Object.keys(data).length === 0);
 
 const StatCard = ({ color, icon, title, value }) => (
-    <div className="col-6 col-md-4 col-lg-4 mb-3">
+    <div className="mb-3 col-6 col-md-4 col-lg-4">
         <div
-            className="card text-white text-center shadow h-100 p-4 d-flex flex-column justify-content-between"
+            className="p-4 text-center text-white shadow card h-100 d-flex flex-column justify-content-between"
             style={{ backgroundColor: color }}
         >
             <div
-                className="mb-3 mx-auto bg-warning rounded-circle d-flex align-items-center justify-content-center"
+                className="mx-auto mb-3 bg-warning rounded-circle d-flex align-items-center justify-content-center"
                 style={{ width: 60, height: 60 }}
             >
                 <i className={icon} style={{ fontSize: 24 }} />
             </div>
-            <h5 className="fs-6 text-uppercase mb-1">{title}</h5>
+            <h5 className="mb-1 fs-6 text-uppercase">{title}</h5>
             <p className="fs-4 fw-bold">{value}</p>
         </div>
     </div>
 );
 
 const ChartCard = ({ title, children, emptyMessage }) => (
-    <div className="card shadow border-0 h-100">
+    <div className="border-0 shadow card h-100">
         <div className="card-body">
-            <h5 className="card-title text-center mb-3">{title}</h5>
+            <h5 className="mb-3 text-center card-title">{title}</h5>
             {children || (
                 <div className="text-center text-muted">{emptyMessage}</div>
             )}
@@ -139,14 +139,14 @@ export default function Dashboard() {
 
                     {/* Pesan jika data transaksi kosong */}
                     {isEmpty(transactionData) && (
-                        <div className="alert alert-warning my-4">
+                        <div className="my-4 alert alert-warning">
                             Data transaksi kosong. Tambahkan data terlebih
                             dahulu.
                         </div>
                     )}
 
                     {/* Charts */}
-                    <div className="row g-4 my-4">
+                    <div className="my-4 row g-4">
                         {/* Chart Pie: Status Transaksi */}
                         {hasAnyPermission(["dashboard.view_transactions"]) && (
                             <div className="col-md-6">
@@ -232,7 +232,7 @@ export default function Dashboard() {
                         )}
                     </div>
 
-                    <div className="row g-4 my-4">
+                    <div className="my-4 row g-4">
                         {/* Chart Bar: Produk Terlaris */}
                         {hasAnyPermission(["dashboard.view_products"]) && (
                             <div className="col-md-6">

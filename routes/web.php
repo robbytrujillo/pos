@@ -7,9 +7,14 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // halaman home test
-Route::inertia('/home', 'Home');
+// Route::inertia('/home', 'Home');
 
 Route::redirect('/login', '/');
+
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+    // Route::get('/dashboard', \App\Http\Controllers\Admin\DashboardController::class)->name('dashboard')->middleware('permission:dashboard.index');
+    Route::get('/dashboard', \App\Http\Controllers\Admin\DashboardController::class)->name('dashboard');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
@@ -17,7 +22,3 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::post('/logout', [\App\Http\Controllers\Auth\LogoutController::class, '__invoke'])->name('logout')->middleware('auth');
-
-Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
-    Route::get('/dashboard', \App\Http\Controllers\Admin\DashboardController::class)->name('dashboard')->middleware('permission:dashboard.index');
-});
